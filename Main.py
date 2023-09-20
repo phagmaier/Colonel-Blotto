@@ -1,7 +1,8 @@
-
-#just need a way to make it converge quicker
+#Even with a small version of the game it requires an enormous amount of iterations for it to
+#converge on an optimal theory
+#Basically just brute forcing this 
 class Player:
-	def __init__(self,iterations=100000,lr=.01):
+	def __init__(self,iterations=1000,lr=.01):
 		self.lr = lr
 		self.iterations = iterations
 		self.gameplans = self.starting_strat()
@@ -60,13 +61,12 @@ class Player:
 
 
 
+if __name__ == "__main__":
+	p1 = Player(iterations=100000,lr=.01)
+	p1.train()
+	saved = [i for i in range(len(p1.gameplans)) if p1.mixed_strat[i] > .009]
 
-p1 = Player()
 
-saved = [i for i in range(len(p1.gameplans)) if p1.mixed_strat[i] > .009]
-
-
-for i in saved:
-	print(f" Play {p1.gameplans[i]} this percentage {p1.mixed_strat[i] * 100}%")
-
+	for i in saved:
+		print(f" Play {p1.gameplans[i]} this percentage {p1.mixed_strat[i] * 100}%")
 
