@@ -1,8 +1,6 @@
-#Even with a small version of the game it requires an enormous amount of iterations for it to
-#converge on an optimal theory
 #Basically just brute forcing this 
 #converges much faster without learning rate
-#with a learning rate of 1 and 200 iterations it converges on a strategy
+#with a learning rate of 1 (basically negating it) and 200 iterations it converges on the optimal strategy
 class Player:
 	def __init__(self,iterations=200,lr=1):
 		self.lr = lr
@@ -64,8 +62,9 @@ class Player:
 
 
 if __name__ == "__main__":
+	#Basically just brute forcing this 
 	#converges much faster without learning rate
-	#with a learning rate of 1 and 200 iterations it converges on a strategy
+	#with a learning rate of 1 (basically negating it) and 200 iterations it converges on the optimal strategy
 	p1 = Player(iterations=200,lr=1)
 	p1.train()
 	saved = [i for i in range(len(p1.gameplans)) if p1.mixed_strat[i] > .009]
