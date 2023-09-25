@@ -1,5 +1,3 @@
-#Basically just brute forcing this 
-#converges much faster without learning rate
 #with a learning rate of 1 (basically negating it) and 200 iterations it converges on the optimal strategy
 class Player:
 	def __init__(self,iterations=200,lr=1):
@@ -47,11 +45,8 @@ class Player:
 		total = sum(temp)
 		self.mixed_strat = [temp[i]/total for i in range(len(self.mixed_strat))]
 
-	#starting with uniform starting strategy assuming we have no idea what optimal strategy is
-	#The problem space is small enough to where we don't have to make assumptions and it doesn't radically
-	#improve time to train since it is so small and simple 
+	#starting with uniform probability where we don't assume one strat is better than another
 	def starting_strat(self):
-		#function to get all possible strategies
 		numbers = [i for i in range(6)]
 		valid_permutations = []
 		for i in numbers:
@@ -64,9 +59,6 @@ class Player:
 
 
 if __name__ == "__main__":
-	#Basically just brute forcing this 
-	#converges much faster without learning rate
-	#with a learning rate of 1 (basically negating it) and 200 iterations it converges on the optimal strategy
 	p1 = Player(iterations=200,lr=1)
 	p1.train()
 	saved = [i for i in range(len(p1.gameplans)) if p1.mixed_strat[i] > .009]
