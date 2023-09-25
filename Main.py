@@ -47,7 +47,9 @@ class Player:
 		total = sum(temp)
 		self.mixed_strat = [temp[i]/total for i in range(len(self.mixed_strat))]
 
-
+	#starting with uniform starting strategy assuming we have no idea what optimal strategy is
+	#The problem space is small enough to where we don't have to make assumptions and it doesn't radically
+	#improve time to train since it is so small and simple 
 	def starting_strat(self):
 		#function to get all possible strategies
 		numbers = [i for i in range(6)]
